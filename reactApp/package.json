@@ -27,6 +27,7 @@
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
     "react-popper": "^0.7.2",
+    "redux": "3.7.2",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
