@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 var config = {
     entry: './main.js',     
     output: {
