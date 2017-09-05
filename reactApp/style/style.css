@@ -14,3 +14,11 @@
 .textTask{
     margin-left: 20px;
 }
+
+.taskDone {
+    text-decoration: line-through;
+}
+
+.deleteButton{
+    float: right;
+}

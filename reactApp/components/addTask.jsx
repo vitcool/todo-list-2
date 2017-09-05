@@ -14,7 +14,7 @@ class AddTask extends React.Component {
   render() {
     return (
       <div className="form-group row">
-        <label htmlFor="add-new-task" className="col-md-3 col-form-label">
+        <label htmlFor="add-new-task" className="col-md-3 col-form-label align-middle">
           New task
         </label>
         <div className="col-md-6">

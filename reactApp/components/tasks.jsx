@@ -3,8 +3,11 @@ import ReactDOM from "react-dom";
 import Task from "./task.jsx";
 
 class Tasks extends React.Component {
-  removeTask(index) {
+  remove(index) {
     this.props.remove(index);
+  }
+  markDone(index) {
+    this.props.markDone(index);
   }
   render() {
     var self = this;
@@ -16,7 +19,8 @@ class Tasks extends React.Component {
               <Task
                 task={task}
                 key={index}
-                remove={self.removeTask.bind(self)}
+                remove={self.remove.bind(self)}
+                markDone={self.markDone.bind(self)}
               />
             );
           })}

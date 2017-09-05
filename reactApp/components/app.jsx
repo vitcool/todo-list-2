@@ -3,8 +3,8 @@ import Tasks from "./tasks.jsx";
 import AddTask from "./addTask.jsx";
 
 const initArray = [
-  {name:"sex", id:0},
-  {name:"coffe", id:1}
+  {name:"sex", id:0, done: false},
+  {name:"coffe", id:1, done: false}
 ]
 
 class App extends React.Component {
@@ -13,26 +13,33 @@ class App extends React.Component {
     this.state = {
       todos: initArray
     };
-    this.addNewTask = this.addNewTask.bind(this);
-    this.removeTask = this.removeTask.bind(this);
+    this.addNew = this.addNew.bind(this);
+    this.remove = this.remove.bind(this);
+    this.markDone = this.markDone.bind(this);
   }
-  addNewTask(taskName) {
+  addNew(taskName) {
     this.state.todos.push({name: taskName});
     var newArray = this.reviewId(this.state.todos);
     this.setState({ todos: newArray });
   }
-  removeTask(index){
+  remove(index){
     this.state.todos.splice(index,1);
     var newArray = this.reviewId(this.state.todos);
     this.setState({ todos: newArray });
+  }
+  markDone(index){
+    this.state.todos[index].done = !this.state.todos[index].done;
+    this.setState({ todos: this.state.todos });
   }
   reviewId(todosArray){
     var resultArray = [];
     var index = 0;
     todosArray.map((todo)=>{
+      var status = todo.done !== undefined ? todo.done : false;
       var todoObj = {
         name:todo.name,
-        id:index
+        id:index,
+        done:status
       }
       resultArray.push(todoObj);
       index++;
@@ -45,8 +52,8 @@ class App extends React.Component {
         <div className="appName text-center">
           <h2>ToDo app</h2>
         </div>
-        <AddTask addNew={this.addNewTask}/>
-        <Tasks tasks={this.state.todos} remove={this.removeTask}/>
+        <AddTask addNew={this.addNew}/>
+        <Tasks tasks={this.state.todos} remove={this.remove} markDone={this.markDone}/>
       </div>
     );
   }
