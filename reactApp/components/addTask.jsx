@@ -6,7 +6,9 @@ class AddTask extends React.Component {
   }
   submitTask() {
     var textTask = this.refs.textInput.value;
-    this.props.addNew(textTask);
+    if (textTask){
+      this.props.addNew(textTask);
+    }
     this.refs.textInput.value = "";
   }
   render() {
