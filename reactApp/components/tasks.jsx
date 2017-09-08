@@ -11,10 +11,11 @@ class Tasks extends React.Component {
   }
   render() {
     var self = this;
+    console.log("tasks", this.props.tasks);
     return (
       <div>
         <ul className="list-group">
-          {this.props.tasks.map((task, index) => {
+          {this.props.tasks.tasks.map((task, index) => {
             return (
               <Task
                 task={task}
