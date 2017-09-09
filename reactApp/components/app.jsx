@@ -23,21 +23,6 @@ class App extends React.Component {
   markDone(index) {
     this.props.onMarkDone(index);
   }
-  reviewId(todosArray) {
-    var resultArray = [];
-    var index = 0;
-    todosArray.map(todo => {
-      var status = todo.done !== undefined ? todo.done : false;
-      var todoObj = {
-        name: todo.name,
-        id: index,
-        done: status
-      };
-      resultArray.push(todoObj);
-      index++;
-    });
-    return resultArray;
-  }
   render() {
     return (
       <div className="todoApplication">
