@@ -8,10 +8,10 @@ class Tasks extends React.Component {
   }
   markDone(index) {
     this.props.markDone(index);
+    
   }
   render() {
     var self = this;
-    console.log("tasks", this.props.tasks);
     return (
       <div>
         <ul className="list-group">

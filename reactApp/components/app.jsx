@@ -4,11 +4,6 @@ import AddTask from "./addTask.jsx";
 
 import { connect } from "react-redux";
 
-const initArray = [
-  { name: "sex", id: 0, done: false },
-  { name: "coffe", id: 1, done: false }
-];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,19 +16,12 @@ class App extends React.Component {
   }
   addNew(taskName) {
     this.props.onAddTask(taskName);
-    //this.state.todos.push({ name: taskName });
-    //var newArray = this.reviewId(this.state.todos);
-    //this.setState({ todos: newArray });
-    console.log(this.props.testTodos);
   }
   remove(index) {
-    this.state.todos.splice(index, 1);
-    var newArray = this.reviewId(this.state.todos);
-    this.setState({ todos: newArray });
+    this.props.onRemoveTask(index);
   }
   markDone(index) {
-    this.state.todos[index].done = !this.state.todos[index].done;
-    this.setState({ todos: this.state.todos });
+    this.props.onMarkDone(index);
   }
   reviewId(todosArray) {
     var resultArray = [];
@@ -51,7 +39,6 @@ class App extends React.Component {
     return resultArray;
   }
   render() {
-    console.log(this.props.testTodos);
     return (
       <div className="todoApplication">
         <div className="appName text-center">
@@ -71,8 +58,14 @@ class App extends React.Component {
 export default connect(
   state => ({ testTodos: state }),
   dispatch => ({
-    onAddTask: (taskName) => {
+    onAddTask: taskName => {
       dispatch({ type: "ADD_TASK", payload: taskName });
+    },
+    onRemoveTask: index => {
+      dispatch({ type: "REMOVE_TASK", index: index });
+    },
+    onMarkDone: index => {
+      dispatch({ type: "MARK_DONE", index: index });
     }
   })
 )(App);
